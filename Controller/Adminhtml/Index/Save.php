@@ -34,15 +34,22 @@ class Save extends Action
     {
         $data = $this->getRequest()->getParams();
         $emptyEmployee = $this->modelFactory->create();
-        $this->resourceModel->load($emptyEmployee, $this->getRequest()->getParam('entity_id'));
+        $this->resourceModel->load($emptyEmployee,$data['entity_id']);
         $emptyEmployee->setName($data['name'] ?? null);
         $emptyEmployee->setEmail($data['email'] ?? null);
         $emptyEmployee->setMobile($data['mobile'] ?? null);
         $emptyEmployee->setDob($data['dob'] ?? null);
         $emptyEmployee->setAddress($data['address'] ?? null);
         $emptyEmployee->setDoj($data['doj'] ?? null);
-        $this->resourceModel->save($emptyEmployee);
-        $this->messageManager->addSuccessMessage(__('Employee %1 saved successfully', $emptyEmployee->getName()));
-        return $this->resultRedirectFactory->create()->setPath('*/*/index');
+
+        try {
+            
+            $this->resourceModel->save($emptyEmployee);
+            $this->messageManager->addSuccessMessage(__('Employee %1 saved successfully', $emptyEmployee->getName()));
+        } catch (\Exception $exception) {
+            $this->messageManager->addErrorMessage(__("Error saving Employee"));
+        }
+        
+        return $this->resultRedirectFactory->create()->setPath('employee/employee/view');
     }
 }

@@ -37,12 +37,15 @@ class Delete extends Action
 
     public function execute()
     {
-
-        $model = $this->modelFactory->create();
-        $id= $this->getRequest()->getParam('entity_id');
-        $model->load($id);
-        $model->delete();
-        $this->messageManager->addSuccessMessage(__("Successfully deleted"));
+        try {
+            $model = $this->modelFactory->create();
+            $id= $this->getRequest()->getParam('entity_id');
+            $model->load($id);
+            $model->delete();
+            $this->messageManager->addSuccessMessage(__("Successfully deleted"));
+        } catch (\Exception $exception) {
+            $this->messageManager->addErrorMessage(__("Error In Deleteing Employee"));
+        }
         return $this->resultRedirectFactory->create()->setPath('*/*/index');
     }
 }
