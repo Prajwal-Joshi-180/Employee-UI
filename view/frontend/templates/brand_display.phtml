@@ -1,0 +1,36 @@
+<?php $brandcollection=$block->getProductCollection();
+sort($brandcollection);
+$elecount=count($brandcollection);
+$brandcollection=array_filter($brandcollection,'strlen');
+$elecount1=count($brandcollection);
+$brandcollection=array_count_values($brandcollection);?>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+th{
+    background-color: #514943;
+    color:white;
+}
+</style>
+</head>
+    <body>
+        <?php echo "Number of Branded Products = ".$elecount1;
+        echo '<br>';
+        echo "Number of Unbranded Products =".($elecount-$elecount1);?>
+<table>
+    <tr>
+    <th>Brand Name</th>
+    <th>Count</th>
+</tr>
+        <?php foreach($brandcollection as $side=>$direc) {?>
+        <tr>
+            <td> <?php echo $side ?></td>
+            <td> <?php echo $direc ?></td>
+        </tr>
+<?php }?>
+</table>
+</body>
+</html>

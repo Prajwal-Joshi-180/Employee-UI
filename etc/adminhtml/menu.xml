@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Codilar_HelloWorld::main"
+             title="Codilar"
+             translate="title"
+             module="Codilar_HelloWorld"
+             sortOrder="50"
+             resource="Codilar_HelloWorld::main"
+        />
+        <add id="Codilar_HelloWorld::employee"
+             title="Employee Management"
+             translate="title"
+             module="Codilar_HelloWorld"
+             sortOrder="50"
+             resource="Codilar_HelloWorld::employee"
+             parent="Codilar_HelloWorld::main"
+        />
+        <add id="Codilar_HelloWorld::employee_list"
+             title="View All Employees"
+             translate="title"
+             module="Codilar_HelloWorld"
+             sortOrder="50"
+             resource="Codilar_HelloWorld::employee_list"
+             parent="Codilar_HelloWorld::employee"
+             action="employee/index/index"
+        />
+    </menu>
+</config>
