@@ -34,7 +34,9 @@ class Save extends Action
     {
         $data = $this->getRequest()->getParams();
         $emptyEmployee = $this->modelFactory->create();
+        if(!empty($data['entity_id'])){
         $this->resourceModel->load($emptyEmployee,$data['entity_id']);
+        }
         $emptyEmployee->setName($data['name'] ?? null);
         $emptyEmployee->setEmail($data['email'] ?? null);
         $emptyEmployee->setMobile($data['mobile'] ?? null);
@@ -50,6 +52,6 @@ class Save extends Action
             $this->messageManager->addErrorMessage(__("Error saving Employee"));
         }
         
-        return $this->resultRedirectFactory->create()->setPath('employee/employee/view');
+        return $this->resultRedirectFactory->create()->setPath('*/*/index');
     }
 }
