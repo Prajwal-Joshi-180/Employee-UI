@@ -79,6 +79,7 @@
             <settings>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-email" xsi:type="boolean">true</rule>
                 </validation>
                 <dataType>text</dataType>
                 <label translate="true">Email</label>
@@ -94,6 +95,9 @@
             <settings>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="min_text_length" xsi:type="number">10</rule>
+                    <rule name="max_text_length" xsi:type="number">10</rule>
+                    <rule name="validate-number" xsi:type="number">0</rule>
                 </validation>
                 <dataType>text</dataType>
                 <label translate="true">Mobile Number</label>
@@ -106,6 +110,10 @@
                     <additionalClasses>
                         <class name="admin__field-date">true</class>
                     </additionalClasses>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                        <rule name="validate-dob" xsi:type="boolean">true</rule>
+                    </validation>
                     <dataType>string</dataType>
                     <label translate="true">Date of Birth</label>
                 </settings>
@@ -120,6 +128,9 @@
             <settings>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-street" xsi:type="boolean">true</rule>
+                    <rule name="max-words" xsi:type="number">255</rule>
+                    <rule name="min-words" xsi:type="number">4</rule>
                 </validation>
                 <dataType>text</dataType>
                 <label translate="true">Address</label>
@@ -132,6 +143,10 @@
                     <additionalClasses>
                         <class name="admin__field-date">true</class>
                     </additionalClasses>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                        <rule name="validate-dob" xsi:type="boolean">true</rule>
+                    </validation>
                     <dataType>string</dataType>
                     <label translate="true">Date of Joining</label>
                 </settings>
